@@ -124,7 +124,6 @@ function initNotePage() {
       createdAt: new Date().toISOString()
     });
     saveNotes();
-    noteTextarea.value = "";
     renderNotes();
   });
 
