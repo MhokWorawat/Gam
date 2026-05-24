@@ -180,6 +180,8 @@ const galleryCaptions = [
 const galleryStart = 50;
 const gallerySlidesCount = 35;
 
+const gallerySlides = galleryCaptions.map((caption, index) => ({
+  src: `image/${String(galleryStart + index).padStart(3, "0")}.jpg`,
   caption
 }));
 
