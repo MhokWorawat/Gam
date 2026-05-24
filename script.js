@@ -71,18 +71,72 @@ function startLoveCounter() {
 
 function initNotePage() {
   const noteTextarea = document.getElementById("noteText");
-  if (!noteTextarea) return;
+  const saveButton = document.getElementById("saveNoteBtn");
+  const noteList = document.getElementById("noteList");
+  const noNotesText = document.getElementById("noNotes");
+  if (!noteTextarea || !saveButton || !noteList || !noNotesText) return;
 
-  const savedNote = localStorage.getItem("galleryNote") || "";
-  noteTextarea.value = savedNote;
+  let notes = JSON.parse(localStorage.getItem("messageNotes") || "[]");
 
-  noteTextarea.addEventListener("input", () => {
-    localStorage.setItem("galleryNote", noteTextarea.value);
+  function saveNotes() {
+    localStorage.setItem("messageNotes", JSON.stringify(notes));
+  }
+
+  function renderNotes() {
+    noteList.innerHTML = "";
+
+    if (notes.length === 0) {
+      noNotesText.style.display = "block";
+      return;
+    }
+
+    noNotesText.style.display = "none";
+
+    notes.slice().reverse().forEach((note) => {
+      const card = document.createElement("div");
+      card.className = "note-card";
+
+      const time = document.createElement("time");
+      const date = new Date(note.createdAt);
+      time.innerText = date.toLocaleString("th-TH", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+
+      const text = document.createElement("p");
+      text.innerText = note.text;
+
+      card.appendChild(time);
+      card.appendChild(text);
+      noteList.appendChild(card);
+    });
+  }
+
+  saveButton.addEventListener("click", () => {
+    const value = noteTextarea.value.trim();
+    if (!value) return;
+
+    notes.push({
+      text: value,
+      createdAt: new Date().toISOString()
+    });
+    saveNotes();
+    noteTextarea.value = "";
+    renderNotes();
   });
-}
 
-const galleryStart = 50;
-const gallerySlidesCount = 35;
+  noteTextarea.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && event.ctrlKey) {
+      event.preventDefault();
+      saveButton.click();
+    }
+  });
+
+  renderNotes();
+}
 
 // กำหนดคำอธิบายทีละรูปทั้ง 35 รูปที่นี่
 const galleryCaptions = [
