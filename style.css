@@ -262,6 +262,13 @@ button:hover{
   color:#b3698a;
 }
 
+.note-input-desc {
+  color:#7b516b;
+  margin-bottom:14px;
+  font-size:0.95rem;
+  line-height:1.55;
+}
+
 .note-list {
   display:flex;
   flex-direction:column;
@@ -288,6 +295,14 @@ button:hover{
   color:#333;
   line-height:1.7;
   white-space:pre-wrap;
+}
+
+.message-text {
+  color:#3f2a3b;
+  text-align:left;
+  white-space:pre-wrap;
+  line-height:1.8;
+  font-size:1rem;
 }
 
 .no-notes {
