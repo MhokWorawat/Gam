@@ -177,8 +177,9 @@ const galleryCaptions = [
   "ถ่ายรูปกันไม่รู้ตั้งกี่รูปแหนะ เค้ายังอยากถ่ายรูปกับอ้วนๆเพิ่มอีกเยอะๆเลยนะ"
 ];
 
-const gallerySlides = galleryCaptions.map((caption, index) => ({
-  src: `image/${String(galleryStart + index).padStart(3, "0")}.jpg`,
+const galleryStart = 50;
+const gallerySlidesCount = 35;
+
   caption
 }));
 
