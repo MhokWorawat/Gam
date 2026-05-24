@@ -72,47 +72,12 @@ function startLoveCounter() {
 function initNotePage() {
   const noteTextarea = document.getElementById("noteText");
   const saveButton = document.getElementById("saveNoteBtn");
-  const noteList = document.getElementById("noteList");
-  const noNotesText = document.getElementById("noNotes");
-  if (!noteTextarea || !saveButton || !noteList || !noNotesText) return;
+  if (!noteTextarea || !saveButton) return;
 
   let notes = JSON.parse(localStorage.getItem("messageNotes") || "[]");
 
   function saveNotes() {
     localStorage.setItem("messageNotes", JSON.stringify(notes));
-  }
-
-  function renderNotes() {
-    noteList.innerHTML = "";
-
-    if (notes.length === 0) {
-      noNotesText.style.display = "block";
-      return;
-    }
-
-    noNotesText.style.display = "none";
-
-    notes.slice().reverse().forEach((note) => {
-      const card = document.createElement("div");
-      card.className = "note-card";
-
-      const time = document.createElement("time");
-      const date = new Date(note.createdAt);
-      time.innerText = date.toLocaleString("th-TH", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit"
-      });
-
-      const text = document.createElement("p");
-      text.innerText = note.text;
-
-      card.appendChild(time);
-      card.appendChild(text);
-      noteList.appendChild(card);
-    });
   }
 
   saveButton.addEventListener("click", () => {
@@ -124,7 +89,6 @@ function initNotePage() {
       createdAt: new Date().toISOString()
     });
     saveNotes();
-    renderNotes();
   });
 
   noteTextarea.addEventListener("keydown", (event) => {
@@ -133,8 +97,6 @@ function initNotePage() {
       saveButton.click();
     }
   });
-
-  renderNotes();
 }
 
 // กำหนดคำอธิบายทีละรูปทั้ง 35 รูปที่นี่
