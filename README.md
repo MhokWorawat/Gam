@@ -9,5 +9,8 @@ Simple personal web page project with:
 - `script.js` for page behavior
 - `style.css` for styling
 
+## Live Demo
+- https://mhokworawat.github.io/Gam/
+
 ## Upload
 This repository is ready to be pushed to GitHub.
