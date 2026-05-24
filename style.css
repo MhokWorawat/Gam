@@ -217,35 +217,87 @@ button:hover{
 .note-page p {
   margin-bottom:20px;
   color:#555;
-  line-height:1.65;
+  line-height:1.75;
+}
+
+.note-input-panel,
+.note-paper {
+  background:#fff;
+  border:1px solid rgba(255,149,163,0.35);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:20px;
+  box-shadow: 0 10px 28px rgba(255,105,155,0.08);
+}
+
+.note-input-panel {
+  background: linear-gradient(180deg, #fff5fb 0%, #ffe3f1 100%);
+  border:1px solid rgba(255,105,155,0.3);
+}
+
+.note-input-panel h2,
+.note-paper h2 {
+  margin-bottom:14px;
+  color:#ff4f8b;
+  font-size:1.3rem;
+}
+
+.note-input-panel textarea {
+  width:100%;
+  min-height:160px;
+  border:none;
+  resize:vertical;
+  padding:16px;
+  border-radius:18px;
+  background:#fff;
+  font-family: 'Prompt', sans-serif;
+  font-size:1rem;
+  line-height:1.7;
+  color:#333;
+  outline:none;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.note-input-panel textarea::placeholder {
+  color:#b3698a;
+}
+
+.note-list {
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.note-card {
+  text-align:left;
+  background:rgba(255,255,255,0.92);
+  border:1px solid rgba(255,149,163,0.25);
+  border-radius:18px;
+  padding:18px;
+  box-shadow: inset 0 2px 10px rgba(255,105,155,0.04);
+}
+
+.note-card time {
+  display:block;
+  margin-bottom:10px;
+  color:#b14f7d;
+  font-size:0.9rem;
+}
+
+.note-card p {
+  color:#333;
+  line-height:1.7;
+  white-space:pre-wrap;
+}
+
+.no-notes {
+  color:#8a6980;
+  font-style:italic;
 }
 
 .note-paper {
   background:#fffdf4;
   border:1px solid rgba(255,149,163,0.35);
-  border-radius:24px;
-  padding:18px;
-  margin-bottom:20px;
-  box-shadow: inset 0 2px 8px rgba(255,105,155,0.08);
-}
-
-.note-paper textarea {
-  width:100%;
-  min-height:260px;
-  border:none;
-  resize:vertical;
-  padding:16px;
-  border-radius:18px;
-  background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,250,240,0.95));
-  font-family: 'Prompt', sans-serif;
-  font-size:1rem;
-  line-height:1.6;
-  color:#333;
-  outline:none;
-}
-
-.note-paper textarea::placeholder {
-  color:#b3698a;
 }
 
 .note-actions {
